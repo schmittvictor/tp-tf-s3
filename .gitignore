@@ -1,6 +1,5 @@
 terraform.tfvars
 .terraform/*
-.terraform*
 ssh_keys/*
 terraform.tfstate
 terraform.tfstate.backup
