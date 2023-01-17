@@ -1,12 +1,12 @@
-#CREATION D'VPC
+# CREATION D'VPC
 resource "aws_vpc" "my_vpc" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.vpc_cidr_block
 }
 
 resource "aws_subnet" "my_subnet" {
   vpc_id            = aws_vpc.my_vpc.id
-  cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-1a"
+  cidr_block        = var.subnet_cidr_block
+  availability_zone = var.subnet_zone
 }
 
 resource "aws_internet_gateway" "my_ig" {
@@ -40,23 +40,23 @@ resource "aws_security_group" "my_sg" {
 
 
   ingress = [{
-    cidr_blocks      = ["0.0.0.0/0"]
+    cidr_blocks      = var.sg_ingress_cidr_blocks
     description      = "Allow SSH"
-    from_port        = 22
+    from_port        = var.sg_ingress_from_port
     ipv6_cidr_blocks = []
     prefix_list_ids  = []
-    protocol         = "TCP"
+    protocol         = var.sg_ingress_protocol
     security_groups  = []
     self             = false
-    to_port          = 22
+    to_port          = var.sg_ingress_to_port
   }]
 
   egress = [{
     description      = "Allow connection to any internet service"
-    from_port        = 0
-    to_port          = 0
+    from_port        = var.sg_egress_from_port
+    to_port          = var.sg_egress_to_port
     protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
+    cidr_blocks      = var.sg_egress_cidr_blocks
     self             = false
     ipv6_cidr_blocks = []
     prefix_list_ids  = []
@@ -77,7 +77,8 @@ resource "aws_instance" "myec2" {
 }
 
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = var.bucket_name
+  bucket        = var.bucket_name
+  force_destroy = true
 }
 
 resource "aws_s3_bucket_policy" "my_bucket_policy" {

@@ -32,6 +32,21 @@ variable "public_ssh_key" {
   type = string
 }
 
+# VPC
+variable "vpc_cidr_block" {
+  type = string
+}
+
+# Subnet CIDR block
+variable "subnet_cidr_block" {
+  type = string
+}
+
+# Subnet zone
+variable "subnet_zone" {
+  type = string
+}
+
 # Variables SG
 # Nom du groupe de sécurité
 variable "sg_name" {
@@ -55,6 +70,21 @@ variable "sg_ingress_to_port" {
 
 # Liste des blocs CIDR autorisés à accéder au groupe de sécurité
 variable "sg_ingress_cidr_blocks" {
+  type = list(string)
+}
+
+# Port de début pour la règle d'entrée du groupe de sécurité
+variable "sg_egress_from_port" {
+  type = number
+}
+
+# Port de fin pour la règle d'entrée du groupe de sécurité
+variable "sg_egress_to_port" {
+  type = number
+}
+
+# Liste des blocs CIDR autorisés à accéder au groupe de sécurité
+variable "sg_egress_cidr_blocks" {
   type = list(string)
 }
 
