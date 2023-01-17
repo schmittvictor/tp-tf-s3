@@ -1,107 +1,63 @@
-# CREATION D'VPC
-resource "aws_vpc" "my_vpc" {
-  cidr_block = var.vpc_cidr_block
+module "ec2-s3-ready" {
+  source = "./modules/ec2-s3-ready"
+
+  # IP ESGI
+  esgi_ip = "94.228.190.38"
+
+  # Variables SSH
+  # Nom de la paire de clés SSH
+  ssh_key_name = "ssh_key"
+
+  # Clé publique de la paire de clés SSH
+  public_ssh_key = "ssh_keys/ssh_key.pub"
+
+  # VPC
+  vpc_cidr_block = "10.0.0.0/16"
+
+  # Subnet CIDR block
+  subnet_cidr_block = "10.0.1.0/24"
+
+  # Subnet zone
+  subnet_zone = "us-east-1a"
+
+  # Variables SG
+  # Nom du groupe de sécurité
+  sg_name = "my_sg"
+
+  # Protocole pour la règle d'entrée du groupe de sécurité
+  sg_ingress_protocol = "tcp"
+
+  # Port de début pour la règle d'entrée du groupe de sécurité
+  sg_ingress_from_port = 22
+
+  # Port de fin pour la règle d'entrée du groupe de sécurité
+  sg_ingress_to_port = 22
+
+  # Liste des blocs CIDR autorisés à accéder au groupe de sécurité
+  sg_ingress_cidr_blocks = ["0.0.0.0/0"]
+
+  # Port de début pour la règle d'entrée du groupe de sécurité
+  sg_egress_from_port = 0
+
+  # Port de fin pour la règle d'entrée du groupe de sécurité
+  sg_egress_to_port = 0
+
+  # Liste des blocs CIDR autorisés à accéder au groupe de sécurité
+  sg_egress_cidr_blocks = ["0.0.0.0/0"]
+
+  # Variables EC2
+  # ID de l'AMI pour l'instance EC2
+  ec2_ami = "ami-0c94855ba95c71c99"
+
+  # Type d'instance
+  ec2_instance_type = "t2.micro"
+
+  # Nom de l'instance EC2
+  ec2_name = "myvm"
+
+  # Nom du bucket S3
+  bucket_name = "bucket-lam-sch-2"
+
+  # Route table CIDR block
+  route_table_cidr_block = "0.0.0.0/0"
 }
-
-resource "aws_subnet" "my_subnet" {
-  vpc_id            = aws_vpc.my_vpc.id
-  cidr_block        = var.subnet_cidr_block
-  availability_zone = var.subnet_zone
-}
-
-resource "aws_internet_gateway" "my_ig" {
-  vpc_id = aws_vpc.my_vpc.id
-}
-
-resource "aws_route_table" "my_rt" {
-  vpc_id = aws_vpc.my_vpc.id
-
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.my_ig.id
-  }
-}
-
-resource "aws_route_table_association" "myrt_asso" {
-  subnet_id      = aws_subnet.my_subnet.id
-  route_table_id = aws_route_table.my_rt.id
-}
-
-# Configuration SSH
-resource "aws_key_pair" "myssh_key" {
-  key_name   = var.ssh_key_name
-  public_key = file(var.public_ssh_key)
-}
-
-# Configuration SG
-resource "aws_security_group" "my_sg" {
-  name   = var.sg_name
-  vpc_id = aws_vpc.my_vpc.id
-
-
-  ingress = [{
-    cidr_blocks      = var.sg_ingress_cidr_blocks
-    description      = "Allow SSH"
-    from_port        = var.sg_ingress_from_port
-    ipv6_cidr_blocks = []
-    prefix_list_ids  = []
-    protocol         = var.sg_ingress_protocol
-    security_groups  = []
-    self             = false
-    to_port          = var.sg_ingress_to_port
-  }]
-
-  egress = [{
-    description      = "Allow connection to any internet service"
-    from_port        = var.sg_egress_from_port
-    to_port          = var.sg_egress_to_port
-    protocol         = "-1"
-    cidr_blocks      = var.sg_egress_cidr_blocks
-    self             = false
-    ipv6_cidr_blocks = []
-    prefix_list_ids  = []
-    security_groups  = []
-
-  }]
-
-}
-
-# Configuration EC2
-resource "aws_instance" "myec2" {
-  ami                         = var.ec2_ami
-  instance_type               = var.ec2_instance_type
-  key_name                    = aws_key_pair.myssh_key.key_name
-  vpc_security_group_ids      = [aws_security_group.my_sg.id]
-  subnet_id                   = aws_subnet.my_subnet.id
-  associate_public_ip_address = true
-}
-
-resource "aws_s3_bucket" "my_bucket" {
-  bucket        = var.bucket_name
-  force_destroy = true
-}
-
-resource "aws_s3_bucket_policy" "my_bucket_policy" {
-  bucket = aws_s3_bucket.my_bucket.bucket
-  policy = jsonencode({
-    "Version" : "2012-10-17",
-    "Statement" : [
-      {
-        "Sid" : "AllowIPAddress",
-        "Effect" : "Allow",
-        "Principal" : "*",
-        "Action" : "s3:*",
-        "Resource" : [
-          "arn:aws:s3:::${var.bucket_name}",
-          "arn:aws:s3:::${var.bucket_name}/*"
-        ],
-        "Condition" : {
-          "IpAddress" : {
-            "aws:SourceIp" : "${aws_instance.myec2.public_ip}"
-          }
-        }
-      }
-    ]
-  })
-}
-
