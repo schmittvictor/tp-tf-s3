@@ -1,11 +1,15 @@
-# IP ESGI
-variable "esgi_ip" {
-  description = "IP ESGI"
+# Variables AWS
+variable "aws_access_key_id" {
+  description = "AWS Access key for account"
+  type        = string
+}
+
+variable "aws_secret_access_key" {
+  description = "AWS Secret key for account"
   type        = string
 }
 
 # Variables SSH
-
 # Nom de la paire de clés SSH
 variable "ssh_key_name" {
   type = string
@@ -18,6 +22,11 @@ variable "public_ssh_key" {
 
 # VPC
 variable "vpc_cidr_block" {
+  type = string
+}
+
+# Variables S3
+variable "bucket_name" {
   type = string
 }
 
@@ -85,11 +94,6 @@ variable "ec2_instance_type" {
 
 # Nom de l'instance EC2
 variable "ec2_name" {
-  type = string
-}
-
-# Variables S3
-variable "bucket_name" {
   type = string
 }
 

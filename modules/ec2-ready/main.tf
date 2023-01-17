@@ -74,33 +74,17 @@ resource "aws_instance" "myec2" {
   vpc_security_group_ids      = [aws_security_group.my_sg.id]
   subnet_id                   = aws_subnet.my_subnet.id
   associate_public_ip_address = true
-}
 
-resource "aws_s3_bucket" "my_bucket" {
-  bucket        = var.bucket_name
-  force_destroy = true
-}
+  user_data = <<-EOF
+  #!/bin/bash
+  sudo apt-get update -y
+  sudo apt-get install awscli -y
+  sudo apt-get install s3fs -y
+  echo ${var.bucket_name}:${var.aws_access_key_id}:${var.aws_secret_access_key} > /etc/passwd-s3fs
+  chmod 600 /etc/passwd-s3fs
+  mkdir /mnt/s3
+  chmod 777 /mnt/s3
+  s3fs ${var.bucket_name} /mnt/s3 -o passwd_file=/etc/passwd-s3fs -o url=https://s3.amazonaws.com/
+  EOF
 
-resource "aws_s3_bucket_policy" "my_bucket_policy" {
-  bucket = aws_s3_bucket.my_bucket.bucket
-  policy = jsonencode({
-    "Version" : "2012-10-17",
-    "Statement" : [
-      {
-        "Sid" : "DenyAllButEC2AndESGI",
-        "Effect" : "Deny",
-        "Principal" : "*",
-        "Action" : "s3:*",
-        "Resource" : [
-          "arn:aws:s3:::${var.bucket_name}/*"
-        ],
-        "Condition" : {
-          "NotIpAddress" : {
-            "aws:SourceIp" : ["${aws_instance.myec2.public_ip}", "${var.esgi_ip}"]
-          }
-        }
-      }
-    ]
-  })
 }
-
