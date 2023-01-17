@@ -58,26 +58,6 @@ variable "sg_ingress_cidr_blocks" {
   type = list(string)
 }
 
-# Protocole pour la règle de sortie du groupe de sécurité
-variable "sg_egress_protocol" {
-  type = string
-}
-
-# Port de début pour la règle de sortie du groupe de sécurité
-variable "sg_egress_from_port" {
-  type = number
-}
-
-# Port de fin pour la règle de sortie du groupe de sécurité
-variable "sg_egress_to_port" {
-  type = number
-}
-
-# Liste des blocs CIDR autorisés à être accessibles depuis le groupe de sécurité
-variable "sg_egress_cidr_blocks" {
-  type = list(string)
-}
-
 # Variables EC2
 # ID de l'AMI pour l'instance EC2
 variable "ec2_ami" {
