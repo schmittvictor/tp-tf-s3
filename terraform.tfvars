@@ -9,7 +9,7 @@ aws_token_session = "FwoGZXIvYXdzEOz//////////wEaDLVGsu0C0jmobHVxhiK/AT3ijBHtr9/
 ssh_key_name = "ssh_key"
 
 # Clé publique de la paire de clés SSH
-public_ssh_key = "ssh_key/ssh_key.pub"
+public_ssh_key = "ssh_keys/ssh_key.pub"
 
 # VPC
 vpc_cidr_block = "10.0.0.0/16"
