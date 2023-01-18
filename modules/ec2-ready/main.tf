@@ -82,13 +82,12 @@ resource "aws_instance" "myec2" {
   sudo yum update -y
   sudo amazon-linux-extras install epel -y
   sudo yum install epel-release s3fs-fuse awscli -y
-  sudo mkdir /root/.aws
-  sudo echo [default] > /root/.aws/credentials
-  sudo echo aws_access_key_id = ${var.aws_access_key_id} >> /root/.aws/credentials
-  sudo echo aws_secret_access_key = ${var.aws_secret_access_key} >> /root/.aws/credentials
-  sudo mkdir /mnt/s3
-  sudo chown ec2-user:ec2-user /mnt/s3
-  sudo s3fs ${var.bucket_name} /mnt/s3 -o nonempty
+  mkdir /home/ec2-user/.aws
+  echo [default] > /home/ec2-user/.aws/credentials
+  echo aws_access_key_id = ${var.aws_access_key_id} >> /home/ec2-user/.aws/credentials
+  echo aws_secret_access_key = ${var.aws_secret_access_key} >> /home/ec2-user/.aws/credentials
+  mkdir /mnt/s3
+  s3fs ${var.bucket_name} /mnt/s3 -o nonempty
   EOF
 
 }
