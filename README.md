@@ -11,7 +11,11 @@
 9. Utilisez la commande Terraform plan pour visualiser les modifications qui seront apportées à AWS.
 10. Utilisez la commande Terraform apply pour appliquer les modifications et déployer le groupe de sécurité et le serveur EC2.
 11. Testez le fonctionnement du serveur EC2 en y accédant à l'aide d'un client SSH.
+
 PS: Vous devez réorganiser le TP pour comprendre le fonctionnement de chaque ressource.
+
 BONUS : Utilisation de modules terraform dans le code.
+
 MALUS : Absence de variables
+
 TIPS : Faites le TP sur la console AWS avant d'écrire le code terraform.
