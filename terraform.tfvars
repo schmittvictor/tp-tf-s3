@@ -1,8 +1,9 @@
 # Variables AWS
 aws_region            = "us-east-1"
-aws_access_key_id     = "ASIASUFI63LKRGVIY2PA"
-aws_secret_access_key = "3X4iEO4OOeHK2rn2l9vX2jZZlCFzwpsmb4vdIXn0"
-aws_session_token     = "FwoGZXIvYXdzEPD//////////wEaDKpT1zKU752H/DUu0iK/AQEZR0bqzApgLxsXIrtK0mBrLf3//+DxqsWLbibkW+IBBsf/1fgMW8W5FkftLfrV/yh95THRn1zYV+i3PLl45/jFnRvHXUUP1y+oB2T/SYyma5u/G/Zxe9oNRFsaVAxi9xDAjdg/CRczcsEsar0LmXDpNxt+5AOVZIZ89WtZ2UQgdFopDeCqTwSqiwXiiUzRU5FwTLAKM+2xVVEOUsDrbUPy61FuuYNrCEWYbfIl2WARREp8HbImI5yVjGCYDYszKO7emp4GMi1Mhd1LQn4vKsmO2lU2tVjjQrpSglve8fLKnf9Nj29cVD077v74WUmK6/anU4w="
+aws_access_key_id="ASIASUFI63LK5XFWHNXO"
+aws_secret_access_key="5Qh55krxvp8zxxW91EP1g3Yk6Czx32JprJaWjuVj"
+aws_session_token="FwoGZXIvYXdzEAQaDP1xVeeOFLZ4tAB2liK/AdV7rKte4aXefCoIqCtFBDSe77VN1CJzTRtr7ot4QAM0NEfUOeAzQjBF9ajGMT4rz9LLxbFYIuUIiCCUwpQNxru2g2uFQBTGnv9QqhyWgL91fDMgGjP46qXy4Lyh7aNV8Qplv22C0fk+5HI+KQapxjKB16PoAbZvpoT5LQWyk7Zxctq/EwpYWGP0rp+qxqJsStrPG7NL4893VDYGpl/esfMeoV49FNRf78e90Aw3GjAMmyCtsEcVGzs1iJAX0EC5KKCin54GMi2hzP9s/v2hxJRQ7lYpInvE7si8Mk4Drs5ixXOy8umT15/+u1RApeDfcjkyPkQ="
+
 
 # IP ESGI
 esgi_ip = "94.228.190.38"
@@ -50,7 +51,7 @@ sg_egress_cidr_blocks = ["0.0.0.0/0"]
 
 # Variables EC2
 # ID de l'AMI pour l'instance EC2
-ec2_ami = "ami-06878d265978313ca"
+ec2_ami = "ami-0b5eea76982371e91"
 
 # Type d'instance
 ec2_instance_type = "t2.medium"
@@ -59,7 +60,7 @@ ec2_instance_type = "t2.medium"
 ec2_name = "myvm"
 
 # Nom du bucket S3
-bucket_name = "bucket-lam-sch-2"
+bucket_name = "bucketlamsch"
 
 # Route table CIDR block
 route_table_cidr_block = "0.0.0.0/0"

@@ -101,3 +101,8 @@ variable "ec2_name" {
 variable "route_table_cidr_block" {
   type = string
 }
+
+variable "bucket_depends_on" {
+  type    = any
+  default = []
+}

@@ -1,3 +1,17 @@
+module "s3-ready" {
+  source = "./modules/s3-ready"
+
+  # IP ESGI
+  esgi_ip = var.esgi_ip
+
+  # Nom du bucket S3
+  bucket_name = var.bucket_name
+
+  ec2_public_ip = module.ec2-ready.ec2_public_ip
+
+
+}
+
 module "ec2-ready" {
   source = "./modules/ec2-ready"
 
@@ -60,17 +74,6 @@ module "ec2-ready" {
 
   # Route table CIDR block
   route_table_cidr_block = var.route_table_cidr_block
-}
 
-module "s3-ready" {
-  source = "./modules/s3-ready"
-
-  # IP ESGI
-  esgi_ip = var.esgi_ip
-
-  # Nom du bucket S3
-  bucket_name = var.bucket_name
-
-  ec2_public_ip = module.ec2-ready.ec2_public_ip
-
+  bucket_depends_on = [module.s3-ready.logging]
 }

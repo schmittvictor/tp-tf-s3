@@ -75,16 +75,20 @@ resource "aws_instance" "myec2" {
   subnet_id                   = aws_subnet.my_subnet.id
   associate_public_ip_address = true
 
+  depends_on = [var.bucket_depends_on]
+
   user_data = <<-EOF
   #!/bin/bash
-  sudo apt-get update -y
-  sudo apt-get install awscli -y
-  sudo apt-get install s3fs -y
-  echo ${var.bucket_name}:${var.aws_access_key_id}:${var.aws_secret_access_key} > /etc/passwd-s3fs
-  chmod 600 /etc/passwd-s3fs
-  mkdir /mnt/s3
-  chmod 777 /mnt/s3
-  s3fs ${var.bucket_name} /mnt/s3 -o passwd_file=/etc/passwd-s3fs -o url=https://s3.amazonaws.com/
+  sudo yum update -y
+  sudo amazon-linux-extras install epel -y
+  sudo yum install epel-release s3fs-fuse awscli -y
+  sudo mkdir /root/.aws
+  sudo echo [default] > /root/aws/credentials
+  sudo echo aws_access_key_id = ${var.aws_access_key_id} >> /root/.aws/credentials
+  sudo echo aws_secret_access_key = ${var.aws_secret_access_key} >> /root/.aws/credentials
+  sudo mkdir /mnt/s3
+  sudo chown ec2-user:ec2-user /mnt/s3
+  sudo s3fs ${var.bucket_name} /mnt/s3 -o nonempty
   EOF
 
 }
