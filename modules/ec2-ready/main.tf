@@ -83,7 +83,7 @@ resource "aws_instance" "myec2" {
   sudo amazon-linux-extras install epel -y
   sudo yum install epel-release s3fs-fuse awscli -y
   sudo mkdir /root/.aws
-  sudo echo [default] > /root/aws/credentials
+  sudo echo [default] > /root/.aws/credentials
   sudo echo aws_access_key_id = ${var.aws_access_key_id} >> /root/.aws/credentials
   sudo echo aws_secret_access_key = ${var.aws_secret_access_key} >> /root/.aws/credentials
   sudo mkdir /mnt/s3

@@ -1,8 +1,8 @@
 # Variables AWS
 aws_region            = "us-east-1"
-aws_access_key_id="ASIASUFI63LK5XFWHNXO"
-aws_secret_access_key="5Qh55krxvp8zxxW91EP1g3Yk6Czx32JprJaWjuVj"
-aws_session_token="FwoGZXIvYXdzEAQaDP1xVeeOFLZ4tAB2liK/AdV7rKte4aXefCoIqCtFBDSe77VN1CJzTRtr7ot4QAM0NEfUOeAzQjBF9ajGMT4rz9LLxbFYIuUIiCCUwpQNxru2g2uFQBTGnv9QqhyWgL91fDMgGjP46qXy4Lyh7aNV8Qplv22C0fk+5HI+KQapxjKB16PoAbZvpoT5LQWyk7Zxctq/EwpYWGP0rp+qxqJsStrPG7NL4893VDYGpl/esfMeoV49FNRf78e90Aw3GjAMmyCtsEcVGzs1iJAX0EC5KKCin54GMi2hzP9s/v2hxJRQ7lYpInvE7si8Mk4Drs5ixXOy8umT15/+u1RApeDfcjkyPkQ="
+aws_access_key_id     = "ASIASUFI63LK5XFWHNXO"
+aws_secret_access_key = "5Qh55krxvp8zxxW91EP1g3Yk6Czx32JprJaWjuVj"
+aws_session_token     = "FwoGZXIvYXdzEAQaDP1xVeeOFLZ4tAB2liK/AdV7rKte4aXefCoIqCtFBDSe77VN1CJzTRtr7ot4QAM0NEfUOeAzQjBF9ajGMT4rz9LLxbFYIuUIiCCUwpQNxru2g2uFQBTGnv9QqhyWgL91fDMgGjP46qXy4Lyh7aNV8Qplv22C0fk+5HI+KQapxjKB16PoAbZvpoT5LQWyk7Zxctq/EwpYWGP0rp+qxqJsStrPG7NL4893VDYGpl/esfMeoV49FNRf78e90Aw3GjAMmyCtsEcVGzs1iJAX0EC5KKCin54GMi2hzP9s/v2hxJRQ7lYpInvE7si8Mk4Drs5ixXOy8umT15/+u1RApeDfcjkyPkQ="
 
 
 # IP ESGI
