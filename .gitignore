@@ -1,4 +1,0 @@
-.terraform
-terraform.*
-ssh_keys/*
-terraform.tfvars
