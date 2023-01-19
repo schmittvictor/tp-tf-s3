@@ -17,6 +17,7 @@ module "ec2-ready" {
 
   aws_access_key_id     = var.aws_access_key_id
   aws_secret_access_key = var.aws_secret_access_key
+  aws_session_token     = var.aws_session_token
 
   # Variables SSH
   # Nom de la paire de clés SSH

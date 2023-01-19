@@ -4,7 +4,6 @@ aws_access_key_id     = "ASIASUFI63LK6C34KGUA"
 aws_secret_access_key = "jLyQSMmRTGMmGx3rb51ECogLaSShhtjxP3lIJOYS"
 aws_session_token     = "FwoGZXIvYXdzEAgaDCBgWLH71TcoSM3xDSK/AUVLuaZyyomANUOovTe0YngRt1xKm8QOtxBf9mBz6UI44fjIxZ2CTvWUOZHE8xqBgvgQrkTNgMj5Oc8QBqC7cN3l/h0lzIeZqtBh/Rh99ghFRMXRotVSGXZA76g7wH4gsoSI4aeI8iQdtVootG2avgeVQb23smoV4tgIXnsLaYv+P27lg0s+5GpNhsMu5E5/rfks1kl3HUTycASbLjAMRI7zjCXx3E7q6NtVockzV/GHxBzbhYc+WnzNJaIBy2ZsKJeMoJ4GMi21+FT6mzGYZ/gkOg6YrOrRPTEnTPhianLCK+b+abqmMEiwbJdswaUKPe5/Q00="
 
-
 # IP ESGI
 esgi_ip = "94.228.190.38"
 
