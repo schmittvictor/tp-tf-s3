@@ -16,7 +16,7 @@ resource "aws_s3_bucket_policy" "my_bucket_policy" {
         "Principal" : "*",
         "Action" : "s3:*",
         "Resource" : [
-          "arn:aws:s3:::  ${var.bucket_name}/*"
+          "arn:aws:s3:::${var.bucket_name}/*"
         ],
         "Condition" : {
           "NotIpAddress" : {
