@@ -49,13 +49,6 @@ resource "aws_instance" "myec2" {
   subnet_id                   = aws_subnet.my_subnet.id
   associate_public_ip_address = true
 
-  depends_on = [
-    aws_key_pair.myssh_key, 
-    aws_security_group.my_sg, 
-    aws_subnet.my_subnet, 
-    var.bucket_depends_on
-  ]
-
   user_data = <<-EOF
   #!/bin/bash
   sudo apt-get update -y && sudo apt-get install s3fs awscli -y
@@ -66,5 +59,12 @@ resource "aws_instance" "myec2" {
   s3fs ${var.bucket_name} /mnt/s3 -o profile=default -o nonempty,rw,allow_other,mp_umask=002,uid=1000,gid=1000 -o url=http://s3.${var.aws_region}.amazonaws.com/
   echo ${var.bucket_name} /mnt/s3 fuse.s3fs _netdev,allow_other 0 0 | sudo tee -a /etc/fstab
   EOF
+
+  depends_on = [
+    aws_key_pair.myssh_key, 
+    aws_security_group.my_sg, 
+    aws_subnet.my_subnet, 
+    var.bucket_depends_on
+  ]
 
 }
