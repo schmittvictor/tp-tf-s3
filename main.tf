@@ -1,9 +1,6 @@
 module "s3-ready" {
   source = "./modules/s3-ready"
-
-  # IP ESGI
-  esgi_ip = var.esgi_ip
-
+  
   # Nom du bucket S3
   bucket_name = var.bucket_name
 

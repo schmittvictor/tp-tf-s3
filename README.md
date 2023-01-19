@@ -2,7 +2,7 @@
 
 1. Téléchargez et installez le client Terraform sur votre ordinateur.
 2. Créez un compte AWS (ou bien utiliser votre compte AWS Academy) et configurez vos clés d'accès dans Terraform.
-3. Cré ez un fichier de configuration Terraform pour dé ployer un bucket S3 (ce bucket doit être exclusivement accessible par l'instance EC2).
+3. Créez un fichier de configuration Terraform pour déployer un bucket S3 (ce bucket doit être exclusivement accessible par l'instance EC2).
 4. Utilisez la commande Terraform init pour initialiser le répertoire de travail.
 5. Utilisez la commande Terraform plan pour visualiser les modifications qui seront apportées à AWS.
 6. Utilisez la commande Terraform apply pour appliquer les modifications et déployer le bucket S3.

@@ -1,9 +1,3 @@
-# IP ESGI
-variable "esgi_ip" {
-  description = "IP ESGI"
-  type        = string
-}
-
 # Variables S3
 variable "bucket_name" {
   type = string

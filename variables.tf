@@ -20,9 +20,6 @@ variable "aws_session_token" {
   type        = string
 }
 
-# IP ESGI
-variable "esgi_ip" {}
-
 # Variables SSH
 
 # Nom de la paire de clés SSH

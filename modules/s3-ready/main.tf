@@ -20,7 +20,7 @@ resource "aws_s3_bucket_policy" "my_bucket_policy" {
         ],
         "Condition" : {
           "NotIpAddress" : {
-            "aws:SourceIp" : ["${var.ec2_public_ip}", "${var.esgi_ip}"]
+            "aws:SourceIp" : "${var.ec2_public_ip}"
           }
         }
       }

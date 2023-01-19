@@ -1,36 +1,3 @@
-# Configuration VPC
-resource "aws_vpc" "my_vpc" {
-  cidr_block = var.vpc_cidr_block
-}
-
-# Configuration subnet
-resource "aws_subnet" "my_subnet" {
-  vpc_id            = aws_vpc.my_vpc.id
-  cidr_block        = var.subnet_cidr_block
-  availability_zone = var.subnet_zone
-}
-
-# Configuration Internet Gateway
-resource "aws_internet_gateway" "my_ig" {
-  vpc_id = aws_vpc.my_vpc.id
-}
-
-# Configuration route table
-resource "aws_route_table" "my_rt" {
-  vpc_id = aws_vpc.my_vpc.id
-
-  route {
-    cidr_block = var.route_table_cidr_block
-    gateway_id = aws_internet_gateway.my_ig.id
-  }
-}
-
-# Configuration association subnet et route table
-resource "aws_route_table_association" "myrt_asso" {
-  subnet_id      = aws_subnet.my_subnet.id
-  route_table_id = aws_route_table.my_rt.id
-}
-
 # Configuration SSH
 resource "aws_key_pair" "myssh_key" {
   key_name   = var.ssh_key_name
@@ -85,7 +52,7 @@ resource "aws_instance" "myec2" {
   #!/bin/bash
   sudo apt-get update -y && sudo apt-get install s3fs awscli -y
   aws configure set aws_access_key_id ${var.aws_access_key_id} 
-  aws configure set aws_secret_access_key ${var.aws_secret_access_key} 
+  aws configure set aws_secret_access_key ${var.aws_secret_access_key}
   aws configure set aws_session_token ${var.aws_session_token}
   mkdir /mnt/s3
   s3fs ${var.bucket_name} /mnt/s3 -o profile=default -o nonempty,rw,allow_other,mp_umask=002,uid=1000,gid=1000 -o url=http://s3.${var.aws_region}.amazonaws.com/
