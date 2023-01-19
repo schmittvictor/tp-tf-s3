@@ -11,7 +11,7 @@ resource "aws_s3_bucket_policy" "my_bucket_policy" {
     "Version" : "2012-10-17",
     "Statement" : [
       {
-        "Sid" : "DenyAllButEC2AndESGI",
+        "Sid" : "DenyAllButEC2",
         "Effect" : "Deny",
         "Principal" : "*",
         "Action" : "s3:*",
