@@ -6,7 +6,6 @@ module "s3-ready" {
 
   ec2_public_ip = module.ec2-ready.ec2_public_ip
 
-
 }
 
 module "ec2-ready" {
