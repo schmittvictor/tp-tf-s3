@@ -1,8 +1,10 @@
+# Configuration Bucket S3
 resource "aws_s3_bucket" "my_bucket" {
   bucket        = var.bucket_name
   force_destroy = true
 }
 
+# Configuration Bucket S3 Policy
 resource "aws_s3_bucket_policy" "my_bucket_policy" {
   bucket = aws_s3_bucket.my_bucket.bucket
   policy = jsonencode({

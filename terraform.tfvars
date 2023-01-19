@@ -1,8 +1,8 @@
 # Variables AWS
 aws_region            = "us-east-1"
-aws_access_key_id     = "ASIASUFI63LK6C34KGUA"
-aws_secret_access_key = "jLyQSMmRTGMmGx3rb51ECogLaSShhtjxP3lIJOYS"
-aws_session_token     = "FwoGZXIvYXdzEAgaDCBgWLH71TcoSM3xDSK/AUVLuaZyyomANUOovTe0YngRt1xKm8QOtxBf9mBz6UI44fjIxZ2CTvWUOZHE8xqBgvgQrkTNgMj5Oc8QBqC7cN3l/h0lzIeZqtBh/Rh99ghFRMXRotVSGXZA76g7wH4gsoSI4aeI8iQdtVootG2avgeVQb23smoV4tgIXnsLaYv+P27lg0s+5GpNhsMu5E5/rfks1kl3HUTycASbLjAMRI7zjCXx3E7q6NtVockzV/GHxBzbhYc+WnzNJaIBy2ZsKJeMoJ4GMi21+FT6mzGYZ/gkOg6YrOrRPTEnTPhianLCK+b+abqmMEiwbJdswaUKPe5/Q00="
+aws_access_key_id     = "ASIASUFI63LKXTTH5Z4Y"
+aws_secret_access_key = "R7GQz3G/QaQjOexGGaNDTUmJ9JMJOyqHDggYZ/Bx"
+aws_session_token     = "FwoGZXIvYXdzEBwaDJ4foSzKBXlqSBjP8iK/ASiHvBOl+aX6DzFPbuJUOM5LKPOR0mFfrh926BUxqTujbFb7EEVeyCw7xxz1QISzxg/Wrc3okF25ewcd9SqpxDqi2vtvKPVekVbeqt1p8yrAA6I3HtsKqc0Tqvtqji8sMq61uvIuiKEOwvpmijiYYyE9A2YzfUQYoISDrE7OiwohW3krbz+blRzGmQ+9ge8FyIMOMU6FbLNt47l95ZHwmDN5aFQ3OyXzNdJnZb9uSuq1AirQOlCr8jYKKP2gF11IKNCvpJ4GMi2DLkQVt98wlWKJMLbbNAeQdiJRhMVQOOh6YbpFb13AtSasVO9QosWkSPKWcEc="
 
 # IP ESGI
 esgi_ip = "94.228.190.38"
@@ -50,7 +50,7 @@ sg_egress_cidr_blocks = ["0.0.0.0/0"]
 
 # Variables EC2
 # ID de l'AMI pour l'instance EC2
-ec2_ami = "ami-0b5eea76982371e91"
+ec2_ami = "ami-00874d747dde814fa"
 
 # Type d'instance
 ec2_instance_type = "t2.medium"

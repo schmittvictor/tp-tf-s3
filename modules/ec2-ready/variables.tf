@@ -1,4 +1,10 @@
 # Variables AWS
+variable "aws_region" {
+  description = "Region of aws deployment"
+  type        = string
+  default     = "us-east-1"
+}
+
 variable "aws_access_key_id" {
   description = "AWS Access key for account"
   type        = string
@@ -107,6 +113,7 @@ variable "route_table_cidr_block" {
   type = string
 }
 
+# Bucket depends on
 variable "bucket_depends_on" {
   type    = any
   default = []
