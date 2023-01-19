@@ -33,6 +33,9 @@ resource "aws_security_group" "my_sg" {
     prefix_list_ids  = []
     security_groups  = []
 
+    depends_on = [
+      aws_vpc.my_vpc
+    ]
   }]
 
 }
@@ -46,7 +49,12 @@ resource "aws_instance" "myec2" {
   subnet_id                   = aws_subnet.my_subnet.id
   associate_public_ip_address = true
 
-  depends_on = [var.bucket_depends_on]
+  depends_on = [
+    aws_key_pair.myssh_key, 
+    aws_security_group.my_sg, 
+    aws_subnet.my_subnet, 
+    var.bucket_depends_on
+  ]
 
   user_data = <<-EOF
   #!/bin/bash

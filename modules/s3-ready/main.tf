@@ -26,5 +26,9 @@ resource "aws_s3_bucket_policy" "my_bucket_policy" {
       }
     ]
   })
+
+  depends_on = [
+    aws_s3_bucket.my_bucket
+  ]
 }
 
